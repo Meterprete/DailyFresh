@@ -8,6 +8,7 @@ from itsdangerous import SignatureExpired
 from django.conf import settings
 from celery_task.tasks import send_active_email
 from django.contrib.auth import authenticate, login
+from utils.mixin import LoginRequiredMixin
 
 
 # 用户注册及邮件发送逻辑
@@ -68,11 +69,12 @@ class Longin(View):
         password = request.POST.get("pwd")
         remember = request.POST.get("remember")
         user = authenticate(username=username, password=password)
+        next = request.GET.get("next", reverse("goods:index"))
         if user is not None:
             if user.is_active:
                 login(request, user)
                 # 判断是否勾选了 “记住用户名”
-                res = redirect(reverse("goods:index"))
+                res = redirect(next)
                 if remember == 'on':
                     res.set_cookie('username', value=username)
                 else:
@@ -82,3 +84,18 @@ class Longin(View):
                 return render(request, 'login.html', {'errmsg': "请先激活用户后登录！！！"})
         else:
             return render(request, 'login.html', {'errmsg': "用户名或密码错误！！！"})
+
+
+class User_center_info(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'user_center_info.html', {'page': 'user'})
+
+
+class User_center_order(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'user_center_order.html', {'page': 'order'})
+
+
+class User_center_site(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'user_center_site.html', {'page': 'address'})
