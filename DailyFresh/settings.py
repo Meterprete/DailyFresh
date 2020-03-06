@@ -155,7 +155,7 @@ CACHES = {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
             "CONNECTION_POOL_KWARGS": {"max_connections": 100},
             # 密码
-            # "PASSWORD": "135089293",
+            # "PASSWORD": "",
         }
     }
 }
@@ -163,3 +163,6 @@ CACHES = {
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
 LOGIN_URL = "/user/login"
+
+# 设置Django文件存储类
+DEFAULT_FILE_STORAGE = 'utils.fdfs.storage.FDFSStorage'
