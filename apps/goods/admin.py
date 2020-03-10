@@ -1,9 +1,53 @@
 from django.contrib import admin
-from apps.goods.models import GoodsType
+from django.core.cache import cache
+
+from apps.goods.models import GoodsType, IndexGoodsBanner, IndexTypeGoodsBanner, IndexPromotionBanner, GoodsImage, \
+    GoodsSPU, GoodsSKU
 
 
-class GoodsTypeAdmin(admin.ModelAdmin):
-    list_display = ['name', 'logo', 'image']
+class BaseModelAdmin(admin.ModelAdmin):
+    def save_model(self, request, obj, form, change):
+        '''新增或更新表中的数据时调用'''
+        super().save_model(request, obj, form, change)
+
+        # 发出任务，让celery worker重新生成首页静态页
+        from celery_task.tasks import static_index_html
+        static_index_html.delay()
+
+        # 清除首页的缓存数据
+        cache.delete('index_page_data')
+
+    def delete_model(self, request, obj):
+        '''删除表中的数据时调用'''
+        super().delete_model(request, obj)
+        # 发出任务，让celery worker重新生成首页静态页
+        from celery_task.tasks import static_index_html
+        static_index_html.delay()
+
+        # 清除首页的缓存数据
+        cache.delete('index_page_data')
+
+
+class GoodsTypeAdmin(BaseModelAdmin):
+    list_display = ['id', 'name', 'logo', 'image']
+
+
+class IndexGoodsBannerAdmin(BaseModelAdmin):
+    list_display = ['id', 'sku', 'image', 'index']
+
+
+class IndexTypeGoodsBannerAdmin(BaseModelAdmin):
+    list_display = ['id', 'type', 'sku', 'display_type', 'index']
+
+
+class IndexPromotionBannerAdmin(BaseModelAdmin):
+    list_display = ['id', 'url', 'name', 'image', 'index']
 
 
 admin.site.register(GoodsType, GoodsTypeAdmin)
+admin.site.register(IndexGoodsBanner, IndexGoodsBannerAdmin)
+admin.site.register(IndexTypeGoodsBanner, IndexTypeGoodsBannerAdmin)
+admin.site.register(IndexPromotionBanner, IndexPromotionBannerAdmin)
+admin.site.register(GoodsSKU)
+admin.site.register(GoodsImage)
+admin.site.register(GoodsSPU)

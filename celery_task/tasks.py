@@ -1,12 +1,15 @@
 from celery import Celery
 from django.core.mail import send_mail
 import django
+from django.template import loader
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 import os
-from django.conf import settings
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'DailyFresh.settings')
 django.setup()
+from django.conf import settings
+from apps.goods.models import GoodsType, IndexGoodsBanner, IndexTypeGoodsBanner, IndexPromotionBanner
+from django_redis import get_redis_connection
 
 # 创建一个celery类的实例
 app = Celery("celery_task.tasks", broker="redis://127.0.0.1:6379/8")
@@ -39,3 +42,32 @@ def send_active_email(email, username, password):
         <a href="{}">{}</a><br><br><span style="color: red;
                 font-weight: bolder;font-size: 15px">过期时间：5分钟，请在正确时间内激活</span></div>'''.format(username, info, info)
     send_mail(subject, message, from_email, to_email, html_message=html_message)
+
+
+@app.task
+def static_index_html():
+    '''商品种类'''
+    goods_type = GoodsType.objects.all()
+    '''轮播图展示'''
+    index_goods_banner = IndexGoodsBanner.objects.all().order_by('index')
+    '''促销图展示'''
+    index_promotion_banner = IndexPromotionBanner.objects.all().order_by('index')
+    '''获取首页商品展示信息'''
+    for type in goods_type:
+        type.image_banner = IndexTypeGoodsBanner.objects.filter(type=type, display_type=1).order_by('index')
+        type.title_banner = IndexTypeGoodsBanner.objects.filter(type=type, display_type=0).order_by('index')
+    context = {
+        'types': goods_type,
+        'goods_banners': index_goods_banner,
+        'promotion_banners': index_promotion_banner,
+    }
+    # 加载模板文件，返回模板对象
+    temp = loader.get_template('static_index.html')
+    # 模板渲染
+    st_index_html = temp.render(context)
+    # 生成模板对应的静态文件
+    save_path = os.path.join(settings.BASE_DIR, 'static/index.html')
+    print(save_path)
+    with open(save_path, 'w') as f:
+        print("静态文件生成")
+        f.write(st_index_html)

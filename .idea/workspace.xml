@@ -2,16 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1af4d289-0416-47db-9175-b46a7a2adaf3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/fdfs/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/fdfs/client.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/fdfs/storage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/DailyFresh.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DailyFresh.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/n.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/test02.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DailyFresh/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DailyFresh/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DailyFresh/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/DailyFresh/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/goods/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/goods/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/goods/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/goods/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/goods/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/goods/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/goods/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/goods/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/celery_task/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/celery_task/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/static_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/static_base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/static_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/static_index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/fdfs/storage.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/fdfs/storage.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +52,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/utils/fdfs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -56,15 +62,15 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Python_Project\Django_Project\DailyFresh\utils\fdfs" />
-      <recent name="E:\Python_Project\Django_Project\DailyFresh\static\js" />
-      <recent name="E:\Python_Project\Django_Project\DailyFresh\templates" />
-      <recent name="E:\Python_Project\Django_Project\DailyFresh\static" />
-      <recent name="E:\Python_Project\Django_Project\DailyFresh\apps\cart" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Python_Project\Django_Project\DailyFresh\apps" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Python_Project\Django_Project\DailyFresh\templates" />
+      <recent name="E:\Python_Project\Django_Project\DailyFresh\utils\fdfs" />
+      <recent name="E:\Python_Project\Django_Project\DailyFresh\static\js" />
+      <recent name="E:\Python_Project\Django_Project\DailyFresh\static" />
+      <recent name="E:\Python_Project\Django_Project\DailyFresh\apps\cart" />
     </key>
   </component>
   <component name="RunManager">
@@ -117,6 +123,11 @@
       <workItem from="1583287661870" duration="12004000" />
       <workItem from="1583374643352" duration="1651000" />
       <workItem from="1583465408961" duration="8898000" />
+      <workItem from="1583552723898" duration="8113000" />
+      <workItem from="1583663539218" duration="2476000" />
+      <workItem from="1583735643474" duration="36000" />
+      <workItem from="1583742072066" duration="10438000" />
+      <workItem from="1583805650587" duration="3415000" />
     </task>
     <servers />
   </component>
@@ -124,14 +135,18 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="115" key="#Deployment" timestamp="1583473067241">
+    <state x="414" y="115" key="#Deployment" timestamp="1583555956211">
       <screen x="0" y="0" width="1845" height="1080" />
     </state>
-    <state x="414" y="115" key="#Deployment/0.0.1845.1080@0.0.1845.1080" timestamp="1583473067241" />
+    <state x="414" y="115" key="#Deployment/0.0.1845.1080@0.0.1845.1080" timestamp="1583555956211" />
     <state x="414" y="115" key="#Notifications" timestamp="1583253265851">
       <screen x="0" y="0" width="1845" height="1080" />
     </state>
     <state x="414" y="115" key="#Notifications/0.0.1845.1080@0.0.1845.1080" timestamp="1583253265851" />
+    <state x="514" y="190" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583555942329">
+      <screen x="0" y="0" width="1845" height="1080" />
+    </state>
+    <state x="514" y="190" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1845.1080@0.0.1845.1080" timestamp="1583555942329" />
     <state x="652" y="237" key="FileChooserDialogImpl" timestamp="1583253036721">
       <screen x="0" y="0" width="1845" height="1080" />
     </state>
@@ -152,13 +167,17 @@
       <screen x="0" y="0" width="1845" height="1080" />
     </state>
     <state width="1792" height="184" key="GridCell.Tab.0.right/0.0.1845.1080@0.0.1845.1080" timestamp="1583204626729" />
-    <state x="300" y="97" key="SettingsEditor" timestamp="1583468893076">
+    <state x="300" y="97" key="SettingsEditor" timestamp="1583556000013">
       <screen x="0" y="0" width="1845" height="1080" />
     </state>
-    <state x="300" y="97" key="SettingsEditor/0.0.1845.1080@0.0.1845.1080" timestamp="1583468893076" />
+    <state x="300" y="97" key="SettingsEditor/0.0.1845.1080@0.0.1845.1080" timestamp="1583556000013" />
     <state x="684" y="208" key="ftp.server.browser" timestamp="1583468878392">
       <screen x="0" y="0" width="1845" height="1080" />
     </state>
     <state x="684" y="208" key="ftp.server.browser/0.0.1845.1080@0.0.1845.1080" timestamp="1583468878392" />
+    <state x="501" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1583560314403">
+      <screen x="0" y="0" width="1845" height="1080" />
+    </state>
+    <state x="501" y="45" width="840" height="1034" key="search.everywhere.popup/0.0.1845.1080@0.0.1845.1080" timestamp="1583560314403" />
   </component>
 </project>

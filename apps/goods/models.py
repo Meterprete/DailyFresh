@@ -1,6 +1,8 @@
 from django.db import models
 from tinymce.models import HTMLField
 from db.base_model import BaseModel
+
+
 # Create your models here.
 
 class GoodsType(BaseModel):
@@ -17,6 +19,7 @@ class GoodsType(BaseModel):
     def __str__(self):
         return self.name
 
+
 class GoodsSPU(BaseModel):
     """商品SPU模型类"""
     name = models.CharField(max_length=20, verbose_name='商品SPU名称')
@@ -30,6 +33,7 @@ class GoodsSPU(BaseModel):
     def __str__(self):
         return self.name
 
+
 class GoodsSKU(BaseModel):
     """商品SKU模型类"""
     status_choices = (
@@ -38,7 +42,7 @@ class GoodsSKU(BaseModel):
     )
 
     type = models.ForeignKey('GoodsType', on_delete=models.CASCADE, verbose_name='商品种类')
-    goods_spu = models.ForeignKey('GoodsSPU',on_delete=models.CASCADE, verbose_name='商品SPU')
+    goods_spu = models.ForeignKey('GoodsSPU', on_delete=models.CASCADE, verbose_name='商品SPU')
     name = models.CharField(max_length=20, verbose_name='商品名称')
     desc = models.CharField(max_length=256, verbose_name='商品简介')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='商品价格')
@@ -47,7 +51,6 @@ class GoodsSKU(BaseModel):
     stock = models.IntegerField(default=1, verbose_name='商品库存')
     sales = models.IntegerField(default=0, verbose_name='商品销量')
     status = models.SmallIntegerField(default=1, choices=status_choices, verbose_name='商品状态')
-
 
     class Meta:
         db_table = 'df_goods_sku'
@@ -105,6 +108,7 @@ class IndexTypeGoodsBanner(BaseModel):
 
     def __str__(self):
         return self.sku.name
+
 
 class IndexPromotionBanner(BaseModel):
     """首页促销活动模型类"""
